@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = "Paul's blog"
+title = "<Blog/>"
 
 [params]
   subtitle = "Talks about Ruby on Rails and React."

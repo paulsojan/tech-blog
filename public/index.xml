@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Paul&#39;s blog</title>
+    <title>&lt;Blog/&gt;</title>
     <link>//localhost:1313/</link>
-    <description>Recent content on Paul&#39;s blog</description>
+    <description>Recent content on &lt;Blog/&gt;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Optimistic vs Pessimistic locking</title>
+      <title>Optimistic vs Pessimistic locking in Rails</title>
       <link>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</guid>

@@ -1,6 +1,6 @@
 ---
 author: Paul Elias Sojan
-title: Optimistic vs Pessimistic locking
+title: Optimistic vs Pessimistic locking in Rails
 date: 2024-03-10
 tags:
   - ruby on rails
@@ -14,7 +14,7 @@ Concurrency handling is an essential aspect of any multi-user application. For e
 
 In this article, let's see two primary locking strategies provided by Rails: Optimistic locking and Pessimistic locking.
 
-### Optimistic Locking
+### Optimistic locking
 
 It is a method of locking transactions that allows multiple transactions to access the same data concurrently assuming that conflicts in the database are rare. If a conflict is detected, such as when multiple transactions are trying to commit at the same time, and if one of the transactions commits successfully, it will reject all other transactions. To detect the conflict optimistic locking uses either a timestamp or a version number that is associated with each record. The transaction with the older version, the change is rolled back.
 
@@ -25,7 +25,7 @@ For example, we have a table called `products` with columns `title`, `stock_quan
 The first user wants to update the `stock_quantity` and do several operations at the same time in the same transaction
 but the second user just wanted to update the `stock_quantity`, and did it in another request simultaneously.
 
-<!-- Add gif -->
+![Optimistic locking](https://ik.imagekit.io/eapzn8piu/optimistic-locking.gif)
 
 In this case, the second user will end up with an error `ActiveRecord::StaleObjectError` because `lock_version` got updated.
 
@@ -39,7 +39,7 @@ Acquiring a database-level lock on a record within a transaction can be achieved
 
 Let's take the same example where the first user is trying to update the `stock_quantity` of a record while the second user is trying to fetch the same record.
 
-<!-- Add gif -->
+![Pessimistic locking](https://ik.imagekit.io/eapzn8piu/pessimistic-locking.gif?updatedAt=1710090099902)
 
 While the first user's transaction was executing, it locked the record, preventing the second user from fetching it from the database. Only after the transaction was finished the second user able to retrieve the record.
 
