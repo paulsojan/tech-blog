@@ -13,14 +13,7 @@
       <link>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</guid>
-      <description>Concurrency handling is an essential aspect of any multi-user application. For example, suppose two users are trying to update the same data fields in an application concurrently. In such instances, you must decide which update is valid and which one should be discarded, which is a pretty challenging task. This is where database locking mechanisms come into play. Locking ensures that only one user can modify a resource at a time, preventing conflicts and maintaining data integrity.</description>
-    </item>
-    <item>
-      <title>Emoji Support</title>
-      <link>//localhost:1313/posts/emoji-support/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <description>Concurrency handling is an essential aspect of any multi-user application. For example, suppose two users are trying to update the same data fields in an application concurrently. In such instances, you must decide which update is valid and which one should be discarded, which is a pretty challenging task. This is where database-locking mechanisms come into play. Locking ensures that only one user can modify a resource at a time, preventing conflicts and maintaining data integrity.</description>
     </item>
   </channel>
 </rss>

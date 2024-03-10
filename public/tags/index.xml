@@ -15,12 +15,5 @@
       <guid>//localhost:1313/tags/ruby-on-rails/</guid>
       <description></description>
     </item>
-    <item>
-      <title>Emoji</title>
-      <link>//localhost:1313/tags/emoji/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/emoji/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
