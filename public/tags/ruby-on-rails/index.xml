@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on Rails on Paul&#39;s blog</title>
-    <link>//localhost:1313/tags/ruby-on-rails/</link>
+    <link>/tags/ruby-on-rails/</link>
     <description>Recent content in Ruby on Rails on Paul&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/ruby-on-rails/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/ruby-on-rails/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Optimistic vs Pessimistic locking</title>
-      <link>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</link>
+      <link>/posts/optimistc-vs-pessimistic-locking/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/optimistc-vs-pessimistic-locking/</guid>
+      <guid>/posts/optimistc-vs-pessimistic-locking/</guid>
       <description>Concurrency handling is an essential aspect of any multi-user application. For example, suppose two users are trying to update the same data fields in an application concurrently. In such instances, you must decide which update is valid and which one should be discarded, which is a pretty challenging task. This is where database-locking mechanisms come into play. Locking ensures that only one user can modify a resource at a time, preventing conflicts and maintaining data integrity.</description>
     </item>
   </channel>
