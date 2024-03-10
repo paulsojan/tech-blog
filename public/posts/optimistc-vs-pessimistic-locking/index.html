@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Optimistic vs Pessimistic locking | Paul&#39;s blog</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="//localhost:1313/">
+      <img
+        class="icon"
+        src="https://ik.imagekit.io/eapzn8piu/avataaars.png"
+      />
+    </a>
+    <div class="text">
+      <a href="//localhost:1313/"><h1>Paul&#39;s blog</h1></a>
+      <h3>Talks about Ruby on Rails and React.</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/"><b>Home</b></a>
+      
+         | 
+        <a href="/tags/"><b>Tags</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Optimistic vs Pessimistic locking</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>2024-03-10</time>
+    
+    
+  </strong>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/ruby-on-rails">ruby on rails</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>Concurrency handling is an essential aspect of any multi-user application. For example, suppose two users are trying to update the same data fields in an application concurrently. In such instances, you must decide which update is valid and which one should be discarded, which is a pretty challenging task. This is where database-locking mechanisms come into play. Locking ensures that only one user can modify a resource at a time, preventing conflicts and maintaining data integrity.</p>
+<p>In this article, let&rsquo;s see two primary locking strategies provided by Rails: Optimistic locking and Pessimistic locking.</p>
+<h3 id="optimistic-locking">Optimistic Locking</h3>
+<p>It is a method of locking transactions that allows multiple transactions to access the same data concurrently assuming that conflicts in the database are rare. If a conflict is detected, such as when multiple transactions are trying to commit at the same time, and if one of the transactions commits successfully, it will reject all other transactions. To detect the conflict optimistic locking uses either a timestamp or a version number that is associated with each record. The transaction with the older version, the change is rolled back.</p>
+<p>Rails supports optimistic locking by adding a <code>lock_version</code> to the model that needs to be locked. Every time a record is successfully updated <code>lock_version</code> increases. When a user tries to update the record, with a version number that doesn&rsquo;t match the current version in the database, Rails raises an <code>ActiveRecord::StaleObjectError</code> exception and the update is rejected.</p>
+<p>For example, we have a table called <code>products</code> with columns <code>title</code>, <code>stock_quantity</code> and <code>lock_version</code>.</p>
+<p>The first user wants to update the <code>stock_quantity</code> and do several operations at the same time in the same transaction
+but the second user just wanted to update the <code>stock_quantity</code>, and did it in another request simultaneously.</p>
+<!-- raw HTML omitted -->
+<p>In this case, the second user will end up with an error <code>ActiveRecord::StaleObjectError</code> because <code>lock_version</code> got updated.</p>
+<p>The downside of optimistic locking is that a rollback will be triggered during the conflict, therefore losing all the work done previously by the currently executing transaction. Rollbacks can be costly for the system as it needs to revert all current pending changes. This is suitable when database transaction conflicts due to concurrent record updates are infrequent and efficiency is a priority.</p>
+<h3 id="pessimistic-locking">Pessimistic locking</h3>
+<p>It assumes that conflicts between database transactions can happen often and locks the data record before reading or writing. This prevents other transactions from accessing the data until the current transaction is either committed or rolled back. In Rails, pessimistic Lock is based upon row-level locking. There are several <a href="https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE">locking clauses</a> while <code>FOR UPDATE</code> is the default behavior in Rails. It causes the rows retrieved by the <code>SELECT</code> statement to be locked as though for update. This prevents them from being locked, modified, or deleted by other transactions until the current transaction ends.</p>
+<p>Acquiring a database-level lock on a record within a transaction can be achieved using the <code>lock</code> method.</p>
+<p>Let&rsquo;s take the same example where the first user is trying to update the <code>stock_quantity</code> of a record while the second user is trying to fetch the same record.</p>
+<!-- raw HTML omitted -->
+<p>While the first user&rsquo;s transaction was executing, it locked the record, preventing the second user from fetching it from the database. Only after the transaction was finished the second user able to retrieve the record.</p>
+<p>This approach might be more suitable when conflicts happen frequently, as it reduces the chance of rolling back transactions.</p>
+</div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p id="social">
+    Find me around the web:
+    <br />
+     
+    <a href="https://github.com/paulsojan">GitHub</a>
+      | 
+    <a href="https://www.linkedin.com/in/paul-elias-sojan">Linkedin</a>
+    
+  </p>
+  
+  <p class="copyright">
+    © 2024
+    <a href="//localhost:1313/"
+      ><strong>Paul Elias Sojan</strong></a
+    >
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>
