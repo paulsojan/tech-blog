@@ -1,7 +1,7 @@
 ---
 author: Paul Elias Sojan
 title: Before your next Rails upgrade
-date: 2024-03-17
+date: 2024-03-20
 tags:
   - ruby on rails
 
