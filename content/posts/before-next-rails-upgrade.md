@@ -1,6 +1,6 @@
 ---
 author: Paul Elias Sojan
-title: Dual boot your rails app
+title: Before your next Rails upgrade
 date: 2024-03-17
 tags:
   - ruby on rails
