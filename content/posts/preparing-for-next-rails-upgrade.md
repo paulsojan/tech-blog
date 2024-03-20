@@ -1,6 +1,6 @@
 ---
 author: Paul Elias Sojan
-title: Before your next Rails upgrade
+title: Preparing for Your Next Rails Upgrade - The Dual Boot Approach
 date: 2024-03-20
 tags:
   - ruby on rails
