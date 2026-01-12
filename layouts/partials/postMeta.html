@@ -16,8 +16,8 @@
 {{ $durationMax := math.Max 1 (div .WordCount $speedMin) }}
 {{ $durationRange := cond
   (eq $durationMin $durationMax)
-  $durationMin
-  (print $durationMin "-" $durationMax)
+  (printf "%v" $durationMin)
+  (printf "%v-%v" $durationMin $durationMax)
 }}
 {{ if .Params.readingSpeedMin | and .Params.readingSpeedMax }}
   {{ $duration = $durationRange }}
