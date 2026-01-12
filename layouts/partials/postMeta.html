@@ -1,18 +1,15 @@
 {{/*
-  Determine the reading time duration
-  Duration is calculated either:
-    - automatically by Hugo
-    - by arithmetic using a user-provided reading speed
-    - by arithmetic using min/max reading speeds
+  Determine the reading time duration (Hugo 0.58.2 compatible)
 */}}
 
 {{ $duration := "" }}
 {{ $speedSingle := default 1 (.Param "readingspeed") }}
 {{ $speedMin := default 1 (.Param "readingspeedmin") }}
 {{ $speedMax := default 1 (.Param "readingspeedmax") }}
-{{ $durationSingle := math.Max 1 (div .WordCount $speedSingle) }}
-{{ $durationMin := math.Max 1 (div .WordCount $speedMax) }}
-{{ $durationMax := math.Max 1 (div .WordCount $speedMin) }}
+
+{{ $durationSingle := cond (lt (div .WordCount $speedSingle) 1) 1 (div .WordCount $speedSingle) }}
+{{ $durationMin := cond (lt (div .WordCount $speedMax) 1) 1 (div .WordCount $speedMax) }}
+{{ $durationMax := cond (lt (div .WordCount $speedMin) 1) 1 (div .WordCount $speedMin) }}
 {{ $durationRange := cond (eq $durationMin $durationMax) $durationMin (print $durationMin "-" $durationMax) }}
 
 {{ if and .Params.readingspeedmin .Params.readingspeedmax }}
