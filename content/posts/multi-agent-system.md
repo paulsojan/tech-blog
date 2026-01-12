@@ -46,6 +46,8 @@ There are many architecture available need to choose architecture that that best
 
 ![Comparison](/images/multi_agent/comparison.avif)
 
+Checkout my github repo: https://github.com/paulsojan/multi-agent-ai
+
 ## Design overview
 
 [actor.py](https://github.com/paulsojan/multi-agent-ai/blob/1-created-multi-agent-ai/core/actor.py)
