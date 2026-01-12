@@ -1,27 +1,31 @@
-baseURL = '/'
-languageCode = 'en-us'
+baseURL = "/"
+languageCode = "en-us"
 title = "<Blog/>"
 description = "Talks about 0s and 1s"
 
 [params]
-  subtitle = "Talks about 0s and 1s."
-  author = "Paul Elias Sojan"
-  brandIconFile = "https://ik.imagekit.io/eapzn8piu/avataaars.png"
-  [[params.social]]
-    name = "GitHub"
-    url = "https://github.com/paulsojan"
-  [[params.social]]
-    name = "Linkedin"
-    url = "https://www.linkedin.com/in/paul-elias-sojan"
+subtitle = "Talks about 0s and 1s."
+author = "Paul Elias Sojan"
+brandIconFile = "https://ik.imagekit.io/eapzn8piu/avataaars.png"
+
+[[params.social]]
+name = "GitHub"
+url = "https://github.com/paulsojan"
+
+[[params.social]]
+name = "Linkedin"
+url = "https://www.linkedin.com/in/paul-elias-sojan"
 
 [menu]
-  [[menu.main]]
-    identifier = 'home'
-    name = 'Home'
-    url = '/'
-    weight = 1
-  [[menu.main]]
-    identifier = 'tags'
-    name = 'Tags'
-    url = '/tags/'
-    weight = 1
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 2
