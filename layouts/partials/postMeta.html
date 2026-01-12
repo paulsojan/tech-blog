@@ -1,12 +1,11 @@
 {{/*
   Determine the reading time duration
-
-  Duration is calculated either
+  Duration is calculated either:
     - automatically by Hugo
     - by arithmetic using a user-provided reading speed
-    - by arithmetic using two user-provided reading speeds that elict min and
-      max durations
+    - by arithmetic using min/max reading speeds
 */}}
+
 {{ $duration := "" }}
 {{ $speedSingle := default 1 (.Param "readingspeed") }}
 {{ $speedMin := default 1 (.Param "readingspeedmin") }}
@@ -14,18 +13,15 @@
 {{ $durationSingle := math.Max 1 (div .WordCount $speedSingle) }}
 {{ $durationMin := math.Max 1 (div .WordCount $speedMax) }}
 {{ $durationMax := math.Max 1 (div .WordCount $speedMin) }}
-{{ $durationRange := cond
-  (eq $durationMin $durationMax)
-  (printf "%v" $durationMin)
-  (printf "%v-%v" $durationMin $durationMax)
-}}
-{{ if .Params.readingSpeedMin | and .Params.readingSpeedMax }}
+{{ $durationRange := cond (eq $durationMin $durationMax) $durationMin (print $durationMin "-" $durationMax) }}
+
+{{ if and .Params.readingspeedmin .Params.readingspeedmax }}
   {{ $duration = $durationRange }}
-{{ else if .Params.readingSpeed }}
+{{ else if .Params.readingspeed }}
   {{ $duration = $durationSingle }}
-{{ else if .Site.Params.readingSpeedMin | and .Site.Params.readingSpeedMax }}
+{{ else if and .Site.Params.readingspeedmin .Site.Params.readingspeedmax }}
   {{ $duration = $durationRange }}
-{{ else if .Site.Params.readingSpeed }}
+{{ else if .Site.Params.readingspeed }}
   {{ $duration = $durationSingle }}
 {{ else }}
   {{ $duration = .ReadingTime }}
@@ -35,21 +31,24 @@
   <strong>
     <span>Posted on</span>
     <time>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFmt) }}</time>
-    {{ with .Params.categories }}<span>in</span>{{ end }}
-    {{ range $key, $value := .Params.categories -}}
-      {{- if $key }}, {{ end }}
-      <a href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
-    {{- end }}
+
+    {{ with .Params.categories }}<span> in </span>{{ end }}
+    {{ range $index, $category := .Params.categories }}
+      {{ if gt $index 0 }}, {{ end }}
+      <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}">{{ $category }}</a>
+    {{ end }}
   </strong>
- {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
- {{ with .ReadingTime}}<span> • {{ $duration }} minute read</span>{{ end }}
+
+  {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
+  {{ with $duration }}<span> • {{ . }} minute read</span>{{ end }}
+
   {{ with .Params.tags }}
     <div>
       <span>Tags:</span>
-      {{ range $key, $value := . }}
-        {{- if $key }}, {{ end }}
-        <a href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}">{{ . }}</a>
-      {{- end }}
+      {{ range $index, $tag := . }}
+        {{ if gt $index 0 }}, {{ end }}
+        <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+      {{ end }}
     </div>
   {{ end }}
 </div>
