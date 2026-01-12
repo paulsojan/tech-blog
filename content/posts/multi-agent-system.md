@@ -11,7 +11,7 @@ readingSpeedMin: 50
 readingSpeedMax: 100
 ---
 
-When I first started working with multi-agent systems, I was fascinated by how independent agents coordinate with each other, how did independent entities communicate? Then I came across a 50-year-old mathematical framework for concurrent computation called Actor model. This blog I'll walk you through how I built a multi-agent system using the Actor Model from scratch.
+When I first started working with multi-agent systems, I was fascinated by how independent agents coordinate with each other, how did independent entities communicate? Then I came across a 50-year-old mathematical framework of concurrent computation called Actor model. This blog I'll walk you through how I built a multi-agent system using the Actor Model from scratch.
 
 ## Introduction
 
@@ -42,7 +42,7 @@ Each agent is an independent actor. At the top of the hierarchy is the Orchestra
 
 The hierarchical approach works best for problems with natural decomposition into sub-problems.
 
-There are many architecture available need to choose architecture that that best matches your primary use case.
+There are many architecture available, need to choose architecture that best matches your primary use case.
 
 ![Comparison](/images/multi_agent/comparison.avif)
 
@@ -147,4 +147,4 @@ First, register all agents to the `Registry`. Then, a workflow list defines the 
 
 ## Conclusion
 
-Multi‑Agent Systems represent a powerful paradigm shift in AI. By orchestrating multiple specialized agents, MAS can tackle complex problems that single agents struggle with. While this implementation demonstrates the core concepts, there is still much more to explore—from dynamic agent creation and adaptive workflows to multi‑orchestrator hierarchies and emergent agent behaviors.
+Multi‑Agent Systems represent a powerful paradigm shift in AI. By orchestrating multiple specialized agents, MAS can tackle complex problems that single agents struggle with. While this implementation demonstrates the core concepts, there is still much more to explore from dynamic agent creation, adaptive workflows to multi‑orchestrator hierarchies.
