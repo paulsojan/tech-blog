@@ -4,7 +4,7 @@ title = "<Blog/>"
 description = "Talks about 0s and 1s"
 
 [params]
-  subtitle = "Talks about Ruby on Rails and React."
+  subtitle = "Talks about 0s and 1s."
   author = "Paul Elias Sojan"
   brandIconFile = "https://ik.imagekit.io/eapzn8piu/avataaars.png"
   [[params.social]]

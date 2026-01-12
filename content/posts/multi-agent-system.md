@@ -1,7 +1,7 @@
 ---
 author: Paul Elias Sojan
 title: Building a multi agent system using Actor model from scratch
-date: 2026-01-13
+date: 2026-01-12
 tags:
   - python
   - llm
@@ -28,13 +28,13 @@ The Actor Model is the foundation of this MAS. It is a model for designing concu
 
 Communication in the Actor Model is asynchronous. They never directly access each other’s state, they communicate by sending messages. When an actor receives a message, it can do only three things, send messages to other actors, create new actors, change its own behavior/state. This strict separation and asynchronous communication naturally eliminates many concurrency issues, making the system robust and scalable.
 
-![Actor model](../../assets/multi_agent/actor_model.png)
+![Actor model](/images/multi_agent/actor_model.png)
 
 Actor model follows `"Let it crash"` approach. So instead of handling every possible error within an actor's logic it let the actor to fail when it encounters an unexpected error. Since each actor is isolated, failure in one actor does not directly affect others. Errors can be managed using a supervision strategy, where a supervisor actor monitors its child actors and decides how to respond on failures.
 
 ## Architecture
 
-![Architecture](../../assets/multi_agent/architecture.png)
+![Architecture](/images/multi_agent/architecture.png)
 
 Here I followed `Hierarchical Architecture` pattern. It is built around one central controller (the `Orchestrator`) and several specialized worker agents.
 
@@ -44,7 +44,7 @@ The hierarchical approach works best for problems with natural decomposition int
 
 There are many architecture available need to choose architecture that that best matches your primary use case.
 
-![Comparison](../../assets/multi_agent/comparison.avif)
+![Comparison](/images/multi_agent/comparison.avif)
 
 ## Design overview
 
