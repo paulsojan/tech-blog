@@ -5,12 +5,13 @@
 
   <title>Paul's Blog</title>
 
-  <link rel="stylesheet" href="{{ "css/reset.css" | relURL }}"/> <link
-  rel="stylesheet" href="{{ "css/font.css" | relURL }}"/> <link rel="stylesheet"
-  href="{{ "css/smigle.css" | relURL }}"/> {{ range
+  <link rel="stylesheet" href="{{ "css/reset.css" | relURL }}" /> <link
+  rel="stylesheet" href="{{ "css/font.css" | relURL }}" /> <link
+  rel="stylesheet" href="{{ "css/smigle.css" | relURL }}" /> {{ range
   .Site.Params.customStylesheets }}
   <link rel="stylesheet" href="{{ . | relURL }}" />
   {{ end }}
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
